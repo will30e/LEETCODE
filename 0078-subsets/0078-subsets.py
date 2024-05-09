@@ -7,11 +7,11 @@ class Solution:
             if i >= len(nums):
                 res.append(subset.copy())
                 return
-            
+            # decision to include nums[i]
             subset.append(nums[i])
             dfs(i + 1)
        
-    
+            #decision to not include nums[1]
             subset.pop()
             dfs(i + 1)
         
