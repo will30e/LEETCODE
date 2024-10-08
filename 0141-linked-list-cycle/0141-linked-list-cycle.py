@@ -12,11 +12,11 @@ class Solution:
         s = head
         f = head.next
         
-        while s !=f:
+        while s != f:
             if f == None or f.next == None:
                 return False
-        
+            
             s = s.next
             f = f.next.next
-
+            
         return True
