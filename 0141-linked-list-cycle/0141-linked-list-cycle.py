@@ -4,26 +4,27 @@
 #         self.val = x
 #         self.next = None
 
+    #we will check if the head is None
+    #Create 2 pointers s,f
+    # if head is None return false
+    #s will be twice as slow as fast
+    # if f is None or f.next is None return return false
+    # move both pointers before returning true
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        
-        #we will check if the head is None
-        #Create 2 pointers s,f
-        # if they are not the same then we will move both of them
-        #s will be twice as slow as fast
-
-        if head == None:
+        if head is None:
             return False
         
         s = head
         f = head.next
         
-        
         while s != f:
-            if f == None or f.next == None:
+            if f is None or f.next is None:
                 return False
-            
+                
             s = s.next
             f = f.next.next
-            
+
         return True
+
+            
