@@ -11,5 +11,15 @@ class Solution:
             else:
                 lst.pop(0)
         return maxLength
+    
+    #    |
+    # "aaabbac"  i =2
+    #[a] len(s) = 7
+    
+    
+    
+    
+    #maxlength = 1
+    
 
 
