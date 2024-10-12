@@ -40,17 +40,17 @@ class Trie:
         return cur.isWord
     
 
-
-
     def startsWith(self, prefix: str) -> bool:
         cur = self.root
-
+        
         for p in prefix:
             if p not in cur.children:
                 return False
             cur = cur.children[p]
-
+        
         return True  
+
+
 
 
         
