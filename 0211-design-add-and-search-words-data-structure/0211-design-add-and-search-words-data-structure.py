@@ -1,3 +1,8 @@
+#first build a TrieNode with children and a flag indicating when when we are at the end of the word
+# to add a word into the list put current at the root node and iterate through the words in the root nodes children
+# after set the flag to True after adding the word
+#for search run dfs on it if the 
+
 class TrieNode():
     def __init__(self):
         self.children = {}
