@@ -4,11 +4,14 @@
     # each time we insert a word we want to check if that word is a child of current if not we add it in.
     # Then we increment cur to the next child and change isword into a True
     #Each time we look for a word in search we want to see if that word is inside of children if not return false imediately
+    # for startsith after you iterate through all the p in prefix return true if the prefix word if in current children and false if it is not in current children
     
-class TrieNode():
+
+class TrieNode:
     def __init__(self):
         self.children = {}
         self.isWord = False
+
 class Trie:
 
     def __init__(self):
@@ -17,32 +20,39 @@ class Trie:
     def insert(self, word: str) -> None:
         cur = self.root
         
+        
         for w in word:
             if w not in cur.children:
                 cur.children[w] = TrieNode()
+
             cur = cur.children[w]
-            
+
         cur.isWord = True
 
+
     def search(self, word: str) -> bool:
-        cur = self.root
-        
+        cur = self.root    
         for w in word:
             if w not in cur.children:
                 return False
             cur = cur.children[w]
-            
+
         return cur.isWord
-        
+    
+
+
 
     def startsWith(self, prefix: str) -> bool:
         cur = self.root
-        
+
         for p in prefix:
             if p not in cur.children:
                 return False
             cur = cur.children[p]
-        return True
+
+        return True  
+
+
         
 
 
