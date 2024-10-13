@@ -1,19 +1,19 @@
+#use a stack
+# helper function to input the word inside
+# reverse the stack and then check if it is the same as s
+
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-    # Helper function to check if a character is alphanumeric
-        def is_alphanumeric(c):
-            return c.isalnum()
-
-        # Use a stack to store alphanumeric characters in lowercase
+        def valid_p(c):
+            return c.isalnum()            
         stack = []
-
-        # Build the stack with only alphanumeric characters in lowercase
+            
         for char in s:
-            if is_alphanumeric(char):
+            if valid_p(char):
                 stack.append(char.lower())
 
-        # Create a reversed version of the stack
-        reversed_stack = stack[::-1]
 
-        # Compare original stack with the reversed one
-        return stack == reversed_stack
+        reverse_stack = stack[::-1] 
+        return stack == reverse_stack
+                
+        
