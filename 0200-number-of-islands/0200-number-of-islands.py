@@ -11,8 +11,10 @@
 #then we append to the queue and the visit
 #check the adjacent position of popped r c in the queue
 
-from collections import deque
+
+
 from typing import List
+import collections
 
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
@@ -20,38 +22,34 @@ class Solution:
             return 0
 
         rows, cols = len(grid), len(grid[0])
-        visit = set()  # To track visited cells.
-        islands = 0  # Counter for the number of islands.
+        visit = set()
+        islands = 0
 
-        # BFS function to explore the connected land ("1") from (r, c).
         def bfs(r, c):
-            q = deque()  # Initialize a queue for BFS.
-            visit.add((r, c))  # Mark the starting cell as visited.
-            q.append((r, c))  # Add it to the queue.
+            q = collections.deque()
+            q.append((r, c))
+            visit.add((r, c))
 
-            # Explore all connected cells.
             while q:
-                row, col = q.popleft()  # Correctly call popleft().
-
-                # Define directions for moving up, down, left, and right.
+                row, col = q.popleft()
                 directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
 
-                # Check all four directions.
                 for dr, dc in directions:
-                    nr, nc = row + dr, col + dc  # New row and column.
-                    # If the new cell is within bounds, is land, and not visited.
-                    if (nr in range(rows) and 
-                        nc in range(cols) and 
-                        grid[nr][nc] == "1" and (nr, nc) not in visit):
-                        q.append((nr, nc))  # Add the new cell to the queue.
-                        visit.add((nr, nc))  # Mark it as visited.
+                    new_r, new_c = row + dr, col + dc
+                    if (0 <= new_r < rows and
+                        0 <= new_c < cols and
+                        grid[new_r][new_c] == "1" and
+                        (new_r, new_c) not in visit):
+                        q.append((new_r, new_c))
+                        visit.add((new_r, new_c))
 
-        # Iterate through the grid to find all islands.
         for r in range(rows):
             for c in range(cols):
-                # If the cell is land ("1") and not visited, start a new BFS.
                 if grid[r][c] == "1" and (r, c) not in visit:
-                    bfs(r, c)  # Perform BFS from this cell.
-                    islands += 1  # Increment the island counter.
+                    bfs(r, c)
+                    islands += 1
 
-        return islands  # Return the total number of islands.
+        return islands
+
+            
+        
