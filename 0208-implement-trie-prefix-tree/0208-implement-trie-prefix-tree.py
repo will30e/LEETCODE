@@ -10,15 +10,16 @@ class Trie:
         
 
     def insert(self, word: str) -> None:
-        cur = self.root
+        cur = self.root 
         
         for w in word:
             if w not in cur.children:
                 cur.children[w] = TrieNode()
                 
-            cur = cur.children[w] 
+            cur = cur.children[w]
+            
         cur.isWord = True
-                
+        
 
     def search(self, word: str) -> bool:
         cur = self.root
@@ -26,7 +27,7 @@ class Trie:
         for w in word:
             if w not in cur.children:
                 return False
-                
+            
             cur = cur.children[w]
         return cur.isWord
 
@@ -40,6 +41,7 @@ class Trie:
             cur = cur.children[p]
             
         return True
+        
 
 
 # Your Trie object will be instantiated and called as such:
